@@ -1,9 +1,3 @@
-;; load emacs 26's package system. Add MELPA repository.
-
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
 (package-initialize)
 
 (when (>= emacs-major-version 26)
@@ -17,6 +11,7 @@
 (require 'package)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
+;; Org-mode configuration
 ;; -*- emacs-lisp -*-
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
@@ -25,17 +20,22 @@
   (package-install 'org))           ;; installed, install it if not
 (package-initialize)                ;; Initialize & Install Package
 ;; (setq org-...)                   ;; Your custom settings
+(require 'org)
 
+
+;; UI settings
 (setq visible-bell 1)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
 
-(set-face-attribute 'default nil :font "consolas 11")
-(set-frame-font "consolas 11" nil t)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'vscode-dark t)
+
+(set-face-attribute 'default nil :font "Cascadia Code" )
+(set-frame-font "Cascadia Code-10" nil t)
 
 ;; Evil-mode configuration
 (require 'evil)
@@ -47,17 +47,7 @@
     (interactive)
     (evil-delete (point-at-bol) (point))))
 
-;; Org-mode configuration
-(require 'org)
-	
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'vscode-dark t)
-
-;; set a default font
-(set-face-attribute 'default nil :font "Cascadia Code" )
-(set-frame-font "Cascadia Code-10" nil t)
-
-; style I want to use in c++ mode
+; Style I want to use in c++ mode
 (c-add-style "my-style" 
 	     '("stroustrup"
 	       (indent-tabs-mode . nil)        ; use spaces rather than tabs
@@ -85,7 +75,9 @@
  ;; If there is more than one, they won't work right.
  )
 
-;; Hotkeys for window resize
+;; KEYBINDINGS
+;;
+;; Window resize
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
