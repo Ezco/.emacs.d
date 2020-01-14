@@ -1,0 +1,5 @@
+# ignore filetypes
+*.el~
+
+# ignore folders
+auto-save-list/
