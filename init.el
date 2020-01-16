@@ -84,3 +84,6 @@
 (global-set-key (kbd "S-C-<right>") 'enlarge-window-horizontally)
 (global-set-key (kbd "S-C-<down>") 'shrink-window)
 (global-set-key (kbd "S-C-<up>") 'enlarge-window)
+
+;; Dired: use 'a' to open file and kill dired buffer.
+(put 'dired-find-alternate-file 'disabled nil)
