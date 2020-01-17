@@ -69,7 +69,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (json-mode evil))))
+ '(package-selected-packages (quote (evil-commentary json-mode evil))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -87,3 +87,6 @@
 
 ;; Dired: use 'a' to open file and kill dired buffer.
 (put 'dired-find-alternate-file 'disabled nil)
+
+;; evil-commentary, to comment stuff out
+(evil-commentary-mode)
