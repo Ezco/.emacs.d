@@ -40,8 +40,8 @@
 (set-frame-parameter (selected-frame) 'alpha '(95 . 80))
 (add-to-list 'default-frame-alist '(alpha . (95 . 80)))
 
-(set-face-attribute 'default nil :font "Cascadia Code" )
-(set-frame-font "Cascadia Code-10" nil t)
+(set-face-attribute 'default nil :font "Hack" )
+(set-frame-font "Hack 10" nil t)
 
 ;; Evil-mode configuration
 (require 'evil)
@@ -68,8 +68,8 @@
 (evil-commentary-mode)
 
 ;; Code style
-(setq c-default-style "linux"
-      c-basic-offset 4)
+;; (setq c-default-style "linux"
+;;       c-basic-offset 4)
 
 ;; Compile command
 (global-set-key "\C-x\C-m" 'compile)
@@ -80,6 +80,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#ebdbb2" "#cc241d" "#98971a" "#d79921" "#458588" "#b16286" "#689d6a" "#3c3836"])
+ '(c-default-style (quote ((c-mode . "linux") (c++-mode . "linux"))))
  '(custom-enabled-themes (quote (gruvbox-dark-hard)))
  '(custom-safe-themes
    (quote
