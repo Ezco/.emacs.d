@@ -11,7 +11,11 @@
 (require 'package)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 
-;; Org-mode configuration
+
+;; ---------------------- ;;
+;; Org-mode configuration ;;
+;; ---------------------- ;;
+
 ;; -*- emacs-lisp -*-
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
@@ -22,10 +26,15 @@
 ;; (setq org-...)                   ;; Your custom settings
 (require 'org)
 
-;; UI settings
-:: (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+
+;; ----------- ;;
+;; UI settings ;;
+;; ----------- ;;
+
+;; (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 ;; (load-theme 'vscode-dark-plus t)
 ;; (load-theme 'gruvbox-dark-medium-theme.el t)
+(column-number-mode 1)
 (setq inhibit-startup-screen t)
 (setq visible-bell 1)
 (menu-bar-mode -1)
@@ -33,8 +42,12 @@
 (scroll-bar-mode -1)
 (when (version<= "26.0.50" emacs-version )
   (global-display-line-numbers-mode))
-  
-;; Transparancy settings
+
+
+;; --------------------- ;;
+;; Transparancy settings ;;
+;; --------------------- ;;
+;;
 ;; (set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
 ;; (set-frame-parameter (selected-frame) 'alpha <both>)
 (set-frame-parameter (selected-frame) 'alpha '(100 . 80))
@@ -43,7 +56,11 @@
 (set-face-attribute 'default nil :font "Hack" )
 (set-frame-font "Hack 10" nil t)
 
-;; Evil-mode configuration
+
+;; ----------------------- ;;
+;; Evil-mode configuration ;;
+;; ----------------------- ;;
+;;
 (require 'evil)
 (evil-mode 1)
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
@@ -53,7 +70,9 @@
     (interactive)
     (evil-delete (point-at-bol) (point))))
 
-;; KEYBINDINGS
+;; ----------- ;;
+;; KEYBINDINGS ;;
+;; ----------- ;;
 ;;
 ;; Window resize
 (global-set-key (kbd "S-C-<left>") 'shrink-window-horizontally)
@@ -67,12 +86,22 @@
 ;; evil-commentary, to comment stuff out
 (evil-commentary-mode)
 
-;; Code style
+
+;; ---------- ;;
+;; Code style ;;
+;; ---------- ;;
+;;
 ;; (setq c-default-style "linux"
 ;;       c-basic-offset 4)
 
+
+;; --------- ;;
+;; Compiling ;;
+;; --------- ;;
+;;
 ;; Compile command
 (global-set-key "\C-x\C-m" 'compile)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
