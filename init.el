@@ -15,7 +15,7 @@
 ;; ---------------------- ;;
 ;; Org-mode configuration ;;
 ;; ---------------------- ;;
-
+;;
 ;; -*- emacs-lisp -*-
 (unless package-archive-contents    ;; Refresh the packages descriptions
   (package-refresh-contents))
@@ -27,7 +27,7 @@
 (require 'org)
 
 
-;; ----------- ;;
+;; ----------- ;; 
 ;; UI settings ;;
 ;; ----------- ;;
 
@@ -91,8 +91,8 @@
 ;; Code style ;;
 ;; ---------- ;;
 ;;
-;; (setq c-default-style "linux"
-;;       c-basic-offset 4)
+(setq c-default-style "linux"
+      c-basic-offset 4)
 
 
 ;; --------- ;;
@@ -111,7 +111,6 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#ebdbb2" "#cc241d" "#98971a" "#d79921" "#458588" "#b16286" "#689d6a" "#3c3836"])
- '(c-default-style (quote ((c-mode . "linux") (c++-mode . "linux"))))
  '(custom-enabled-themes (quote (zenburn)))
  '(custom-safe-themes
    (quote
