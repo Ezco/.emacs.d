@@ -26,6 +26,13 @@
 ;; (setq org-...)                   ;; Your custom settings
 (require 'org)
 
+;; Add custom bullets in org-mode
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+(add-to-list 'load-path "~/.emacs.d/my_els")
+(require 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
 ;; ----------- ;; 
 ;; UI settings ;;
