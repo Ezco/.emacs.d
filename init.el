@@ -1,15 +1,12 @@
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; Comment/uncomment this line to enable MELPA Stable if desired.  See `package-archive-priorities`
+;; and `package-pinned-packages`. Most users will not need or want to do this.
+;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
 
-(when (>= emacs-major-version 26)
-  (require 'package)
-  (add-to-list
-   'package-archives
-   ;; '("melpa" . "http://stable.melpa.org/packages/") ; many packages won't show if using stable
-   '("melpa" . "http://melpa.milkbox.net/packages/")
-   t))
-
-(require 'package)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+;; Python
+(elpy-enable)
 
 
 ;; ---------------------- ;;
@@ -110,10 +107,6 @@
 ;; Compile command
 (global-set-key "\C-x\C-m" 'compile)
 (custom-set-variables
-
-
-
-
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -135,7 +128,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (doom-themes naysayer-theme zenburn-theme darktooth-theme gruvbox-theme json-mode evil-commentary autothemer)))
+    (elpy doom-themes naysayer-theme zenburn-theme darktooth-theme gruvbox-theme json-mode evil-commentary autothemer)))
  '(pdf-view-midnight-colors (quote ("#282828" . "#f9f5d7")))
  '(pos-tip-background-color "#36473A")
  '(pos-tip-foreground-color "#FFFFC8")
