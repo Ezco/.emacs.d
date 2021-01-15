@@ -1,0 +1,24 @@
+HTTP/1.1 200 OK
+Content-Type: image/svg+xml
+Last-Modified: Thu, 21 Nov 2019 05:55:43 GMT
+ETag: "0x8D76E47727777E0"
+Request-Context: appId=cid-v1:21aee9e4-1cf5-4750-b2bd-78b2747f4211
+X-Datacenter: wus
+X-Frame-Options: SAMEORIGIN
+x-content-type-options: nosniff
+X-UA-Compatible: IE=edge
+X-XSS-Protection: 1; mode=block
+Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+X-Rendering-Stack: Static
+Vary: Accept-Encoding
+Content-Encoding: gzip
+Content-Length: 200
+Cache-Control: public, max-age=1791
+Expires: Thu, 31 Dec 2020 17:43:41 GMT
+Date: Thu, 31 Dec 2020 17:13:50 GMT
+Connection: keep-alive
+Akamai-Cache-Status: Hit from child
+report-to: {"group":"network-errors","max_age":604800,"endpoints":[{"url":"https://mdec.nelreports.net/api/report?cat=mdocs"}]}
+nel: {"report_to":"network-errors","max_age":604800,"success_fraction":0.01,"failure_fraction":1.0}
+
+<svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M27 30V5.61L1 8.98V30h26zm2 0h34V1.09L29 5.51V30zm0 2v25.55l34 4.63V32H29zm-2.03 0H1v21.49l25.97 3.65V32z" fill="#0078d7"/></svg>
