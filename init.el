@@ -49,9 +49,6 @@
 ;;                                                                             ;;
 ;; ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~ ;;
 
-(use-package doom-themes :defer t)
-(load-theme 'doom-gruvbox t)
-(doom-themes-visual-bell-config)
 
 
 ;; ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~ ;;
@@ -139,12 +136,15 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+(use-package doom-themes :defer t)
+(load-theme 'doom-gruvbox t)
+(doom-themes-visual-bell-config)
+
 ;; Use Diminish
 (use-package diminish)
 
 ;; Ivy is a generic completion mechanism for Emacs
 ;; github.com/abo-abo/swiper
-
 (use-package ivy 
   :diminish
   :init
@@ -169,6 +169,37 @@
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill)))
 
+;; Add information to M-x
+(use-package ivy-rich
+  :init
+  (ivy-rich-mode 1))
+
+;; Connect M-x to ivy-rich
+(use-package counsel
+  :bind (("M-x" . counsel-M-x)
+	 ("C-x b" . counsel-ibuffer)
+	 ("C-x C-f" . counsel-find-file)
+	 :map minibuffer-local-map
+	 ("C-r" . 'counsel-minibuffer-history))
+  :config
+  (setq ivy-initial-inputs-alist nil)) ;; Don't start search with ^
+
+;; Give hints for prefixes
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config
+  (setq which-key-idle-delay 1.0))
+
+(use-package helpful
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
 
 ;; Org-mode
 (unless (package-installed-p 'org)  ;; Make sure the Org package is
@@ -190,7 +221,7 @@
   (setq evil-want-integration t)
   (setq evil-want-keybinding nil)
   (setq evil-want-C-u-scroll t)
-  (setq evil-want-C-i-jump t)
+  (setq evil-want-C-i-jump nil)
   (setq evil-respect-visual-line-mode t)
   :config
   (evil-mode 1)
@@ -211,6 +242,12 @@
     ;; [gc]   comments out selection
     ;; [gcap] comments out a paragraph
 
+;; Evil settings for lots of modes
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
 ;; Matlab-mode
 (autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
 (add-to-list
@@ -218,38 +255,6 @@
  '("\\.m$" . matlab-mode))
 (setq matlab-indent-function t)
 (setq matlab-shell-command "matlab")
-
-;; Give hints for prefixes
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :config
-  (setq which-key-idle-delay 1.0))
-
-;; Add information to M-x
-(use-package ivy-rich
-  :init
-  (ivy-rich-mode 1))
-
-;; Connect M-x to ivy-rich
-(use-package counsel
-  :bind (("M-x" . counsel-M-x)
-	 ("C-x b" . counsel-ibuffer)
-	 ("C-x C-f" . counsel-find-file)
-	 :map minibuffer-local-map
-	 ("C-r" . 'counsel-minibuffer-history))
-  :config
-  (setq ivy-initial-inputs-alist nil)) ;; Don't start search with ^
-
-(use-package helpful
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
 
 
 ;; ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~ ;;
@@ -273,3 +278,18 @@
 
 ; Compile command
 (global-set-key "\C-x\C-m" 'compile)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (evil-collection zenburn-theme which-key use-package shrink-path rainbow-delimiters naysayer-theme matlab-mode json-mode ivy-rich helpful gruvbox-theme evil-commentary doom-themes diminish-buffer diminish darktooth-theme counsel company-anaconda all-the-icons))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
