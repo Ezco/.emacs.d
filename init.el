@@ -236,7 +236,10 @@
   (evil-set-initial-state 'dashboard-mode 'normal))
 
 ;; Evil-commentary, to comment stuff out
-(evil-commentary-mode)
+(use-package evil-commentary
+  :after evil
+  :init
+  (evil-commentary-mode))
     ;; https://github.com/linktohack/evil-commentary
     ;; [gcc]  comments out a line
     ;; [gc]   comments out selection
@@ -249,12 +252,14 @@
   (evil-collection-init))
 
 ;; Matlab-mode
-(autoload 'matlab-mode "matlab" "Matlab Editing Mode" t)
-(add-to-list
- 'auto-mode-alist
- '("\\.m$" . matlab-mode))
-(setq matlab-indent-function t)
-(setq matlab-shell-command "matlab")
+(use-package matlab
+  :ensure matlab-mode
+  :config
+  (add-to-list
+   'auto-mode-alist
+   '("\\.m\\'" . matlab-mode))
+  (setq matlab-indent-function t)
+  (setq matlab-shell-command "matlab"))
 
 
 ;; ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~ ;;
