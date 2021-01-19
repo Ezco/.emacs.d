@@ -1,3 +1,4 @@
+
 ;; ~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~*~ ;;
 ;;                                                                             ;;
 ;; Startup                                                                     ;;
@@ -202,19 +203,24 @@
   ([remap describe-key] . helpful-key))
 
 ;; Org-mode
-(unless (package-installed-p 'org)  ;; Make sure the Org package is
-  (package-install 'org))           ;; installed, install it if not
-(package-initialize)                ;; Initialize & Install Package
-;; (setq org-...)                   ;; Your custom settings
-(require 'org)
+(use-package org
+  :after evil
+  :defer t
+  :config
+  (evil-define-key '(normal insert visual) org-mode-map (kbd "C-j") 'org-next-visible-heading)
+  (evil-define-key '(normal insert visual) org-mode-map (kbd "C-k") 'org-previous-visible-heading)
+  (evil-define-key '(normal insert visual) org-mode-map (kbd "M-j") 'org-metadown)
+  (evil-define-key '(normal insert visual) org-mode-map (kbd "M-k") 'org-metaup))
 
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
+  ;; (global-set-key (kbd "C-c l") 'org-store-link)
+  ;; (global-set-key (kbd "C-c a") 'org-agenda)
+  ;; (global-set-key (kbd "C-c c") 'org-capture)
 
 ;; Add custom bullets in org-mode
-(require 'org-bullets)
-(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+(use-package org-bullets
+  :after (org)
+  :config
+  (add-hook 'org-mode-hook 'org-bullets-mode))
 
 (use-package evil
   :init
